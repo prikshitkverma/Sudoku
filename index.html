@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+   
+    <title>SUDOKU</title>
+	<style>
+	body{
+    font-family: Source Sans Pro,sans-serif;
+font-size: 25px;
+
+}
+
+.flex{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content:center;
+    align-items: stretch;
+}
+.flex > div{
+    flex:1;
+ 
+}
+.easybuttn{
+    text-align:right;
+}
+.mediumbuttn{
+    text-align: center;
+}
+.hardbuttn{
+    text-align: left;
+}
+
+table{
+    margin:auto;
+}
+
+
+.tableContainer{
+    display:flex;
+    justify-content: center;
+  
+}
+.tableContainer table{
+    table-layout: fixed;
+    border-collapse: collapse;
+   border:2px solid #344861;;
+  
+}
+.tableContainer .cell{
+    width: 60px;
+    box-sizing: border-box;
+    height:60px;
+   border:none;
+   font-size:25px; 
+   text-align:center;
+   font-family: Source Sans Pro,sans-serif;
+}
+
+.tableContainer td :hover{
+    background-color: #BBDEFB !important;
+}
+
+.tableContainer td{
+    padding:0;
+    border:1px solid #bec6d4;
+
+}
+.tableContainer tr{
+    padding:0;
+}
+.tableContainer .thickbottom{
+    border-bottom:2px solid #344861;
+}
+.tableContainer .thickright{
+    border-right:2px solid #344861;
+}
+.valContainer{
+    display:flex;
+    justify-content: center;
+    padding:30px;
+}
+
+
+.redcell{
+    background-color: aliceblue;
+    color: red;
+    width: 60px;
+    box-sizing: border-box;
+    height:60px;
+   border:none;
+   font-size:25px; 
+   text-align:center;
+   font-family: Source Sans Pro,sans-serif;
+    
+}
+.blackcell
+{
+    background-color: aliceblue;
+    width: 60px;
+    box-sizing: border-box;
+    height:60px;
+   border:none;
+   font-size:25px; 
+   text-align:center;
+   font-family: Source Sans Pro,sans-serif; 
+}
+.h3
+{
+    color:dodgerblue;
+    font-family: Source Sans Pro,sans-serif; 
+}</style>
+	
+</head>
+
+<body>
+	
+    <div class="containerbtn">
+         <div class="flex">
+             <div class="easybuttn"> 
+                 <button class="easy">Easy</button>
+             </div>
+             <div class="mediumbuttn">
+                <button class="medium">Medium</button>
+             </div>
+             <div class="hardbuttn">
+                <button class="hard">Hard</button>
+             </div>    
+        </div>
+    </div>
+    <div>
+        <center><h3 class="h3"></h2></center>
+        </div>    
+        <div class="tableContainer">
+            <table>
+                <tbody class="table">
+                <tr class="rows">
+                    <td class="coln"><input type="text" id="00" value=""     class="cell"  maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="01" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input  id="02" type="text"  class="cell"  maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="03" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="04" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input  id="05" type="text"  class="cell"  maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="06" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="07" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="08" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                </tr>
+                <tr class="rows">
+                    <td class="coln"><input type="text" id="10" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="11" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input type="text" id="12" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="13" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="14" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="15" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="16" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="17" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="18" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                </tr>
+                <tr class="rows thickbottom">
+                    <td class="col"><input type="text" id="20" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="col"><input type="text" id="21" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="col thickright"><input id="22" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="col"><input type="text" id="23" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="col"><input type="text" id="24" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="col thickright"><input id="25" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="col"><input type="text" id="26" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="col"><input type="text" id="27" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="col"><input type="text" id="28" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                </tr>
+                <tr class="rows">
+                    <td class="coln"><input type="text" id="30" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="31" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="32" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="33" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="34" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="35" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="36" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="37" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="38" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                </tr>
+                <tr class="rows">
+                    <td class="coln"><input type="text" id="40"class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="41" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="42" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="43" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="44" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="45" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="46" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="47" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="48" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                </tr>
+                <tr class="rows thickbottom">
+                    <td class="coln"><input type="text" id="50" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="51" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="52" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="53" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="54" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="55" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="56" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="57" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text"  id="58" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                </tr>
+                <tr class="rows">
+                    <td class="coln"><input type="text" id="60" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="61" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="62" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="63" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="64" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="65" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="66" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="67" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="68" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                </tr>
+                <tr class="rows">
+                    <td class="coln"><input type="text" id="70" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="71" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="72" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="73" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="74" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="75" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="76" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="77" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="78" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                </tr>
+                <tr class="rows">
+                    <td class="coln"><input type="text" id="80" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="81" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="82" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="83" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="84" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln thickright"><input id="85" type="text" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="86" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="87" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                    <td class="coln"><input type="text" id="88" class="cell" maxlength="1" onkeypress='return restrictAlphabets(event)'></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            </div>
+            <div class="valContainer">
+                <button class="validate">Validate</button>
+            </div>
+
+            
+</body>
+<script>
+var h3 = document.querySelector('.h3');
+function restrictAlphabets(e) {
+    var x = e.which || e.keycode;
+    if ((x >= 49 && x <= 57))
+        return true;
+    else
+        return false;
+}
+var table = document.querySelector('.table');
+var easy = [[2,null,5,null,null,9,null,null,4],
+[null,null,null,null,null,null,3,null,7],
+[7,null,null,8,5,6,null,1,null],
+[4,5,null,7,null,null,null,null,null],
+[null,null,9,null,null,null,1,null,null],
+[null,null,null,null,null,2,null,8,5],
+[null,2,null,4,1,8,null,null,6],
+[6,null,8,null,null,null,null,null,null],
+[1,null,null,2,null,null,7,null,8]];
+
+var easybutton = document.querySelector(".easy");
+window.addEventListener("load",(e)=>{
+    easybutton.style.border = "2px solid blue";
+    mediumbutton.style.border = null;
+    hardbutton.style.border = null;
+
+    let tr = table.firstElementChild;
+    for(let i=0; i<9; i++)
+    {
+        let td = tr.firstElementChild;
+        for(let j=0; j<9; j++)
+        {
+            
+            td.firstElementChild.value = easy[i][j];
+            td.firstElementChild.addEventListener("input",(e)=>{
+                check(e);
+            });
+            td.firstElementChild.addEventListener("mouseup",(e)=>{
+                highlight(e);
+            });
+            
+
+            if(easy[i][j]!==null)
+            {
+                td.firstElementChild.disabled = true;     
+            }
+            else
+            {
+                td.firstElementChild.disabled = false;
+            }
+            td = td.nextElementSibling;
+
+        }
+        tr = tr.nextElementSibling;
+    }
+});
+var easy = [[2,null,5,null,null,9,null,null,4],
+[null,null,null,null,null,null,3,null,7],
+[7,null,null,8,5,6,null,1,null],
+[4,5,null,7,null,null,null,null,null],
+[null,null,9,null,null,null,1,null,null],
+[null,null,null,null,null,2,null,8,5],
+[null,2,null,4,1,8,null,null,6],
+[6,null,8,null,null,null,null,null,null],
+[1,null,null,2,null,null,7,null,8]];
+
+easybutton.addEventListener("click",(e)=>{
+	h3.innerHTML = "";
+    easybutton.style.border = "2px solid blue";
+    mediumbutton.style.border = null;
+    hardbutton.style.border = null;
+    let tr = table.firstElementChild;
+    for(let i=0; i<9; i++)
+    {
+        let td = tr.firstElementChild;
+        for(let j=0; j<9; j++)
+        {
+            td.firstElementChild.setAttribute("class", "cell");
+            td.firstElementChild.style.backgroundColor = "";
+            td.firstElementChild.value = easy[i][j];
+            if(easy[i][j]!==null)
+            {
+                td.firstElementChild.disabled = true;     
+            }
+            else
+            {
+                td.firstElementChild.disabled = false;
+            }
+            td = td.nextElementSibling;
+
+        }
+        tr = tr.nextElementSibling;
+    }
+});
+var medium = [[null,null,6,null,9,null,2,null,null],
+            [null,null,null,7,null,2,null,null,null],
+            [null,9,null,5,null,8,null,7,null],
+            [9,null,null,null,3,null,null,null,6],
+            [7,5,null,null,null,null,null,1,9],
+            [1,null,null,null,4,null,null,null,5],
+            [null,1,null,3,null,9,null,8,null],
+            [null,null,null,2,null,1,null,null,null],
+            [null,null,9,null,8,null,1,null,null]];
+
+var mediumbutton = document.querySelector(".medium");
+
+mediumbutton.addEventListener("click",(e)=>{
+	h3.innerHTML = "";
+    mediumbutton.style.border = "2px solid blue";
+    easybutton.style.border = null;
+    hardbutton.style.border = null;
+    let tr = table.firstElementChild;
+    for(let i=0; i<9; i++)
+    {
+        let td = tr.firstElementChild;
+        for(let j=0; j<9; j++)
+        {
+            
+            td.firstElementChild.value = medium[i][j];
+            // td.firstElementChild.addEventListener("change",check);
+            td.firstElementChild.style.backgroundColor = "";
+            td.firstElementChild.setAttribute("class", "cell");
+            if(medium[i][j]!==null)
+            {
+                td.firstElementChild.disabled = true;     
+            }
+            else
+            {
+                td.firstElementChild.disabled = false;
+            }
+            td = td.nextElementSibling;
+
+        }
+        tr = tr.nextElementSibling;
+    }
+});
+
+var hard = [[null,null,null,8,null,null,null,null,null],
+            [7,8,9,null,1,null,null,null,6],
+            [null,null,null,null,null,6,1,null,null],
+            [null,null,7,null,null,null,null,5,null],
+            [5,null,8,7,null,9,3,null,4],
+            [null,4,null,null,null,null,2,null,null],
+            [null,null,3,2,null,null,null,null,null],
+            [8,null,null,null,7,null,4,3,9],
+            [null,null,null,null,null,1,null,null,null]];
+
+var hardbutton = document.querySelector(".hard");
+hardbutton.addEventListener("click",(e)=>{
+ 	h3.innerHTML = "";
+    hardbutton.style.border = "2px solid blue";
+    mediumbutton.style.border = null;
+    easybutton.style.border = null;
+
+    let tr = table.firstElementChild;
+    for(let i=0; i<9; i++)
+    {
+        let td = tr.firstElementChild;
+        for(let j=0; j<9; j++)
+        {
+            
+            td.firstElementChild.value = hard[i][j];
+            td.firstElementChild.style.backgroundColor = "";
+            td.firstElementChild.setAttribute("class", "cell");
+            if(hard[i][j]!==null)
+            {
+                td.firstElementChild.disabled = true;     
+            }
+            else
+            {
+                td.firstElementChild.disabled = false;
+            }
+            td = td.nextElementSibling;
+
+        }
+        tr = tr.nextElementSibling;
+    }
+});
+
+function check(e){
+	var validate=[];
+    let tr = table.firstElementChild;
+    for(let i=0;i<9;i++)
+    {
+        validate[i]=[];
+        let td = tr.firstElementChild;
+        for(let j=0;j<9;j++)
+        {
+            validate[i][j]=td.firstElementChild.value;
+            td = td.nextElementSibling;
+        }
+        tr = tr.nextElementSibling;
+    }
+    var id = e.target.id;
+    var r_index = parseInt(id[0]);
+    var c_index = parseInt(id[1]);
+    var r = validate[r_index];
+    var c = [];
+    let answer = false;
+    for(i=0; i<9; i++)
+    {
+    	c.push(validate[i][c_index]);
+    }
+    console.log(r_index);
+    console.log(c_index);
+   	for(let i in r)
+   	{
+          
+   		if(r[i]==validate[r_index][c_index] && i!=c_index)
+   		{
+            answer=true;
+   			break;
+   		}
+   	}
+       if(answer==false)
+       {
+        for(let i in c)
+        {
+            if(c[i]==validate[r_index][c_index] && i!=r_index)
+            {
+                
+                answer=true;
+                break;
+            }
+            
+        }
+       }
+       if(answer==false)
+       {
+           var r_start = r_index - r_index%3;
+           var c_start = c_index - c_index%3;
+           for(let i=r_start;i<r_start+3;i++)
+           {
+               for(let j=c_start;j<c_start+3;j++)
+               {
+                         if(validate[i][j]==validate[r_index][c_index] && (r_index!=i && c_index!=j))
+                         {
+                             answer=true;
+                             break;
+                         }
+               }
+           }
+       }
+       if(answer==true)
+       {
+        document.getElementById(id).setAttribute("class","redcell");
+       }
+       else
+       {
+        document.getElementById(id).setAttribute("class","blackcell");
+       }
+       e.target.backgroundColor
+   	
+
+    	
+    
+}
+
+ 
+function highlight(e)
+{
+	h3.innerHTML = "";
+	let highlight=[];
+    let tr = table.firstElementChild;
+    for(let i=0;i<9;i++)
+    {
+        highlight[i]=[];
+        let td = tr.firstElementChild;
+        for(let j=0;j<9;j++)
+        {
+            highlight[i][j]=td.firstElementChild;
+            td.firstElementChild.style.backgroundColor = ""; 
+            if(highlight[i][j].value==e.target.value && highlight[i][j].value!=="")
+            {
+            	highlight[i][j].style.backgroundColor = "aqua";
+            }
+            td = td.nextElementSibling;
+        }
+        tr = tr.nextElementSibling;
+    }
+    let id = e.target.id;
+    let r_index = parseInt(id[0]);
+    let c_index = parseInt(id[1]);
+    let r = highlight[r_index];
+    let c = [];
+    for(i=0; i<9; i++)
+    {
+    	c.push(highlight[i][c_index]);
+    }
+   	for(let i of r)
+   	{
+   		if(!(i.getAttribute("class")==="redcell" || i.getAttribute("class")==="blackcell" ||i.style.backgroundColor=="aquamarine"))
+   		{
+    		i.style.backgroundColor = "#EFEFEF";
+    	}
+   	}
+      
+    for(let i of c)
+    {
+    	if(!(i.getAttribute("class")==="redcell" || i.getAttribute("class")==="blackcell" ||i.style.backgroundColor=="aquamarine"))
+    	{
+    		i.style.backgroundColor = "#EFEFEF";
+    	}
+    }
+    let r_start = r_index - r_index%3;
+    let c_start = c_index - c_index%3;
+    for(let i=r_start;i<r_start+3;i++)
+    {
+        for(let j=c_start;j<c_start+3;j++)
+        {
+        	if(!(highlight[i][j].getAttribute("class")==="redcell" || highlight[i][j].getAttribute("class")==="blackcell" ||highlight[i][j].style.backgroundColor=="aquamarine"))
+        	{
+        		highlight[i][j].style.backgroundColor = "#EFEFEF";
+        	}         
+        }
+    }
+    
+e.target.style.backgroundColor = 'aliceblue';
+    	    
+}
+
+
+
+var validatebutton = document.querySelector(".validate");
+validatebutton.addEventListener("click",(e)=>{
+
+
+    
+    var x;
+	var gotNull = false;
+    let tr = table.firstElementChild;
+    for(let i=0;i<9;i++)
+    {
+        let td = tr.firstElementChild;
+        for(let j=0;j<9;j++)
+        {
+            x=td.firstElementChild;
+            if(x.getAttribute('class')==="redcell")
+            {
+            	alert('Soduku is not correct!!');
+            	return;
+            
+            }
+            
+            if(x.value==="")
+            {
+            	gotNull = true;
+            }
+            td = td.nextElementSibling;
+        }
+        tr = tr.nextElementSibling;
+    }
+    
+    if(gotNull===true)
+    {
+    	 alert('Going Good..Press OK to continue!!');
+    }
+    else
+    {
+    	 alert('Congratulations,You have successfully completed your game!');	
+    }
+})</script>
+</html>
