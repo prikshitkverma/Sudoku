@@ -1,0 +1,87 @@
+* {
+  font-family: Source Sans Pro, sans-serif;
+}
+@media (min-width: 600px) {
+  * {
+    font-size: 25px;
+  }
+}
+@media (max-width: 700px) {
+  input[type="number"] {
+    height: 5vw !important;
+    width: 5vw !important;
+  }
+}
+:root {
+  --dark-border: #344861;
+  --light-border: #bec6d4;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: t extfield;
+  border: 0;
+  text-align: center;
+  height: 60px;
+  width: 60px;
+}
+input:focus {
+  outline: none;
+}
+table {
+  /* border:1px solid var(--dark-border); */
+  margin: auto;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+td {
+  border: 2px solid var(--light-border);
+}
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+.bottom-dark {
+  border-bottom: 3px solid var(--dark-border);
+}
+.left-dark {
+  border-left: 3px solid var(--dark-border);
+}
+.right-dark {
+  border-right: 3px solid var(--dark-border);
+}
+.top-dark {
+  border-top: 3px solid var(--dark-border);
+}
+.inpDisabled {
+  background-color: #f0f0f0;
+}
+.duplicate{
+  background-color: red !important;
+}
+input:hover{
+  background-color: skyblue;
+}
+input[disabled]:hover{
+  background-color: #f0f0f0 !important;
+}
+.filledColor {
+	background-color: #bbdefb ;
+}
+.alertpop{
+  position: absolute;
+  display: none;
+  height:100px;
+  width:80%;
+  background-color: #5bc0de;
+  top:50px;
+  left:10%;
+  text-align: center;
+  padding-top: 40px;
+}

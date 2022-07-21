@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
+  </head>
+  <body onload="loadFunc()">
+    <div  >
+      <div>
+        <h1 style="text-align: center; font-size: 5vw;">SUDOKU</h1>
+      </div>
+      <div class="buttons">
+        <button onclick="easyMaze()">Easy</button>
+        <button onclick="mediumMaze()">Medium</button>
+        <button onclick="hardMaze()">Hard</button>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <td><input id="0" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="1" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="2" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="3" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="4" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="5" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="6" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="7" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="8" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+          </tr>
+          <tr>
+            <td><input id="9" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="10" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="11" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="12" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="13" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="14" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="15" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="16" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="17" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+          </tr>
+          <tr>
+            <td><input id="18" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="19" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="20" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="21" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="22" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="23" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="24" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="25" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="26" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+          </tr>
+          <tr>
+            <td><input id="27" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="28" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="29" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="30" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="31" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="32" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="33" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="34" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="35" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+          </tr>
+          <tr>
+            <td><input id="36" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="37" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="38" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="39" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="40" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="41" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="42" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="43" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="44" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+          </tr>
+          <tr>
+            <td><input id="45" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="46" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="47" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="48" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="49" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="50" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="51" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="52" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="53" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+          </tr>
+          <tr>
+            <td><input id="54" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="55" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="56" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="57" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="58" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="59" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="60" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="61" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="62" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+          </tr>
+          <tr>
+            <td><input id="63" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="64" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="65" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="66" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="67" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="68" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="69" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="70" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="71" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+          </tr>
+          <tr>
+            <td><input id="72" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="73" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="74" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="75" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="76" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="77" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="78" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="79" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+            <td><input id="80" oninput="doCheck(this)"  type="number" max="9" min="1" /></td>
+          </tr>
+        </table>
+      </div>
+      <button onclick="ansCheck()" style="display:flex;margin:auto;margin-top: 20px;">Validate</button>
+    </div>
+    <div class="alertpop"><span>Congrats!!, You Won</span><br/><button 
+       style="float:right;margin-right:30px">Play Again</button></div>
+  </body>
+</html>
